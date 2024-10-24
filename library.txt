@@ -1,0 +1,4 @@
+1=  npm install @mui/material @emotion/react @emotion/styled
+2=  npm i react-router-dom moment 6pp
+3=  npm i react-chartjs-2 chart.js
+4=  npm i react-hot-toast react-helmet-async
