@@ -1,14 +1,13 @@
 import { Container, Paper, Typography, TextField, Button, Avatar, Stack, IconButton } from '@mui/material'
 import { CameraAlt as CameraAltIcon } from '@mui/icons-material'
-import React, { useState,useEffect } from 'react'
-import { VissuallyHiddenInput } from '../components/styles/styledComponents'
+import React, { useState, useEffect } from 'react'
 import { validateLoginForm, validateSignUpForm } from '../utils/formValidations'
 const Login = () => {
     const [isLogin, setLogin] = useState(true)
     const [error, setErrors] = useState("")
     const [avatarPreview, setAvatarPreview] = useState(null)
     const toggleLogin = () => setLogin((prev) => !prev)
-  
+
     const [formData, setFormData] = useState({
         name: '',
         bio: '',
@@ -21,18 +20,18 @@ const Login = () => {
         const { name, value, type } = e.target;
 
         if (type === "file") {
-            const file =e.target.files[0];
+            const file = e.target.files[0];
             const url = URL.createObjectURL(file)
             setFormData({
                 ...formData,
                 [name]: file,
             })
-            setAvatarPreview(url) 
+            setAvatarPreview(url)
             console.log(avatarPreview)
         } else {
             setFormData({
                 ...formData,
-                [name]:value,
+                [name]: value,
             })
         }
 
@@ -107,7 +106,7 @@ const Login = () => {
                             <Typography variant="h5">Sign Up</Typography>
                             <form onSubmit={handleRegisterSubmission} style={{ width: '100%', marginTop: '1rem' }}>
                                 <Stack position={"relative"} width={"10rem"} margin={"auto"}>
-                                    <Avatar sx={{ width: "10rem", height: "10rem", objectFit: "contain"  }} src={avatarPreview || null} />
+                                    <Avatar sx={{ width: "10rem", height: "10rem", objectFit: "contain" }} src={avatarPreview || null} />
                                     <IconButton
                                         sx={{
                                             position: "absolute",
@@ -118,7 +117,17 @@ const Login = () => {
                                     >
                                         <>
                                             <CameraAltIcon />
-                                            <VissuallyHiddenInput name='avatar' type="file" onChange={handleChange}/>
+                                            <input type="file" name='avatar' onChange={handleChange} style={{
+                                                border: 0,
+                                                clip: "rect(0 0 0 0)",
+                                                height: 1,
+                                                margin: -1,
+                                                overflow: "hidden",
+                                                padding: 0,
+                                                position: "absolute",
+                                                whiteSpace: "nowrap",
+                                                width: 1
+                                            }} />
                                         </>
                                     </IconButton>
                                 </Stack>
