@@ -3,10 +3,10 @@ const Home = lazy(() => import("./pages/Home"))
 const Login = lazy(() => import("./pages/Login"))
 const Chat = lazy(() => import("./pages/Chat"))
 const Group = lazy(() => import("./pages/Group"))
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, redirect } from 'react-router-dom'
 import ProtectRoute from './components/auth/ProtectRoute'
 const App = () => {
-  const user = true
+  const user = false
   return (
     <BrowserRouter>
       <Routes>
@@ -16,7 +16,9 @@ const App = () => {
           <Route path='/group' element={<Group />} />
         </Route>
 
-        <Route path='Login' element={<Login />} />
+        <Route path='Login' element={<ProtectRoute user={!user}  redirect='/'>
+          <Login/>
+        </ProtectRoute>} />
 
       </Routes>
     </BrowserRouter>
