@@ -8,6 +8,7 @@ const Login = () => {
     const [avatarPreview, setAvatarPreview] = useState(null)
     const toggleLogin = () => setLogin((prev) => !prev)
 
+    
     const [formData, setFormData] = useState({
         name: '',
         bio: '',
