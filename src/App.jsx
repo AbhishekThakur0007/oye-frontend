@@ -7,12 +7,12 @@ const NotFound = lazy(() => import("./pages/NotFound"))
 import { BrowserRouter, Routes, Route, redirect } from 'react-router-dom'
 import ProtectRoute from './components/auth/ProtectRoute'
 const App = () => {
-  const user = false
+  const user = true
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<ProtectRoute user={user} />}>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home name={"gandu"} />} />
           <Route path='/chat/:chatId' element={<Chat />} />
           <Route path='/group' element={<Group />} />
         </Route>
